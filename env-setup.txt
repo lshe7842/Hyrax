@@ -1,0 +1,7 @@
+1. Download PhantomJS 1.9.2, unzip it to [location], add [location] to PATH variable in your pc;
+
+2. Download Casper 1.1, unzip it to [location], add [location]\bin to PATH variable in your pc;
+
+3. Download Python 2, install it to [location], add [location] to PATH variable in your pc;
+
+4. Open cmd, type 'casperjs env-verify.js', you should see some normal output on console.
