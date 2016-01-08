@@ -1,0 +1,9 @@
+{
+	testCases: [{
+		testCaseName: "test case 1",
+		asserts: ["assertEquals(1, 1)"]
+	},{
+		testCaseName: "test case 2",
+		asserts: ["assertEquals(1, 1)"]
+	}]
+}
