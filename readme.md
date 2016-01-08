@@ -29,10 +29,10 @@ NOTE: it seems that casperjs doesn't work too well with ConEmu, better do this u
 
 
 ## Terminology
-#### Template - .tpl file
+#### Template - ```casper-test.tpl```
 This file contains the casperjs test file template where test specifications will be injected.
 
-#### Specification - .spec file
+#### Specification - ```test-spec.json```
 This file contains the test specifications.
 
 ## How it works
@@ -41,7 +41,7 @@ Cd to the root of this repo, type
 ```
 gulp
 ```
-This will inject all test specifications defined in ```specs/test.spec``` file into ```src/casper.test.tpl``` to generate ```casper-test.js```. This process creates one ```casper-test.js``` file for each test case defined in ```test.spec``` file.
+This will inject all test specifications defined in ```specs/test-spec.json``` file into ```src/casper.test.tpl``` to generate ```casper-test.js```. This process creates one ```casper-test.js``` file for each test case defined in ```test-spec.json``` file.
 ```
 TODO: numbering different casper-test.js
 ```
