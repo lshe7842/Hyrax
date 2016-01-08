@@ -14,9 +14,9 @@ And then
 ```
 npm install
 ```
-This will install the build system 'gulp' as well as all other dependencies;
+This will install the build system ```gulp``` as well as all other dependencies;
 
-3. Read and follow env-setup.txt to setup PhantomJS and Casper which are the driving wheels of this whole framework.
+3. Read and follow ```env-setup.txt``` to setup PhantomJS and Casper which are the driving wheels of this whole framework.
 
 4. At the command line, type
 ```
@@ -41,7 +41,7 @@ Cd to the root of this repo, type
 ```
 gulp
 ```
-This will inject all test specifications defined in specs/test.spec file into src/casper.test.tpl to generate casper-test.js. This process creates one casper-test.js file for each test case defined in test.spec file.
+This will inject all test specifications defined in ```specs/test.spec``` file into ```src/casper.test.tpl``` to generate ```casper-test.js```. This process creates one ```casper-test.js``` file for each test case defined in ```test.spec``` file.
 ```
 TODO: numbering different casper-test.js
 ```
