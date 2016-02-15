@@ -3,7 +3,8 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	del = require('del'),
 	data = require('gulp-data'),
-	swig = require('gulp-swig');
+	swig = require('gulp-swig'),
+	casperjs = require('gulp-casperjs');
 
 // var specJSON = require('./specs/test-spec.json');
 
@@ -27,7 +28,8 @@ gulp.task('workflow-swig', function(){
 		.pipe(data(specJSON))
 		.pipe(swig())
 		.pipe(rename('casper-test.js'))
-		.pipe(gulp.dest('targets/'));
+		.pipe(gulp.dest('targets/'))
+		.pipe(casperjs());
 });
 
 gulp.task('clean-temp', function(){
