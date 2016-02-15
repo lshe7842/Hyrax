@@ -36,12 +36,10 @@ This file contains the casperjs test file template where test specifications wil
 This file contains the test specifications.
 
 ## How it works
+Define your test case in ```test-spec-swig.json```.
+Note that the ```numOfAsserts``` MUST be the same as the number of asserts in ```asserts``` array.
 
 Cd to the root of this repo, type
 ```
 gulp
-```
-This will inject all test specifications defined in ```specs/test-spec.json``` file into ```src/casper.test.tpl``` to generate ```casper-test.js```. This process creates one ```casper-test.js``` file for each test case defined in ```test-spec.json``` file.
-```
-TODO: numbering different casper-test.js
 ```
