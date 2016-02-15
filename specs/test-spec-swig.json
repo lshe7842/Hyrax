@@ -1,0 +1,6 @@
+{
+	"testCaseName": "Test case 1",
+	"url": "https://sysa.insuranceonline.nrma.auiag.corp/oss/GTConnect/UnifiedAcceptor/SelfServiceCentre.Main/brandId/nrma",
+	"numOfAsserts": 2,
+	"asserts": ["test.assertExists('#username')", "test.assertExists('#password')"]
+}

@@ -1,11 +1,15 @@
 var gulp = require('gulp'),
 	template = require('gulp-template'),
 	rename = require('gulp-rename'),
-	del = require('del');
+	del = require('del'),
+	data = require('gulp-data'),
+	swig = require('gulp-swig');
 
-var specJSON = require('./specs/test-spec.json');
+// var specJSON = require('./specs/test-spec.json');
 
-// Basic workflow for creating a valid casper test file.
+var specJSON = require('./specs/test-spec-swig.json');
+
+// INACTIVE - Basic workflow for creating a valid casper test file.
 gulp.task('workflow-basic', function(){
 	gulp.src('src/casper-test.tpl')
 		.pipe(template({
@@ -17,8 +21,17 @@ gulp.task('workflow-basic', function(){
 		.pipe(gulp.dest('targets/'));
 });
 
+// Basic workflow for creating a valid casper test file - using Swig to support multiple asserts.
+gulp.task('workflow-swig', function(){
+	gulp.src('src/casper-test-swig.tpl')
+		.pipe(data(specJSON))
+		.pipe(swig())
+		.pipe(rename('casper-test.js'))
+		.pipe(gulp.dest('targets/'));
+});
+
 gulp.task('clean-temp', function(){
 	del(['temp/**', 'targets/**']);
 });
 
-gulp.task('default', ['clean-temp', 'workflow-basic']);
+gulp.task('default', ['clean-temp', 'workflow-swig']);
