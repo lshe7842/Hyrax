@@ -1,0 +1,36 @@
+{
+	"testCaseName": "Test case 1",
+	
+	"url": "https://sysa.insuranceonline.nrma.auiag.corp/oss/GTConnect/UnifiedAcceptor/SelfServiceCentre.Main/brandId/nrma",
+	
+	"numOfAsserts": 2,
+	
+	"expects": [
+		"assertExists('#username')", 
+		"assertExists('#password')"
+	],
+
+	"actions": [
+		{
+			"action": "click",
+			"target": "button.buttonLogin",
+			"expects": [
+				"test.assertExists('#login_error')"
+			]
+		},
+		{
+			"action": "click",
+			"target": "button#buttonViewPolicy",
+			"expects": [
+				"test.assertExists('#login_error')"
+			]
+		},
+		{
+			"action": "click",
+			"target": "button#buttonRenew",
+			"expects": [
+				"test.assertExists('#login_error')"
+			]
+		}
+	]
+}

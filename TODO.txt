@@ -1,0 +1,2 @@
+1. Programmatically get the number of asserts in a test case;
+2. Multiple test cases in seperate casperjs files;
