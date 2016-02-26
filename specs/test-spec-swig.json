@@ -3,8 +3,10 @@
 	
 	"url": "https://sysa.insuranceonline.nrma.auiag.corp/oss/GTConnect/UnifiedAcceptor/SelfServiceCentre.Main/brandId/nrma",
 	
+	"signalOk": "header.nrma",
+
 	"numOfAsserts": 2,
-	
+
 	"expects": [
 		"assertExists('#username')", 
 		"assertExists('#password')"
