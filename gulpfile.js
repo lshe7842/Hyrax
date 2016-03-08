@@ -4,11 +4,13 @@ var gulp = require('gulp'),
 	del = require('del'),
 	data = require('gulp-data'),
 	swig = require('gulp-swig'),
-	casperjs = require('gulp-casperjs');
+	casperjs = require('gulp-casperjs'),
+	specProcessor = require('./src/testSpecProcessor');
 
 // var specJSON = require('./specs/test-spec.json');
 
-var specJSON = require('./specs/test-spec-swig.json');
+var specJSON = require('./specs/test-spec-swig.json'),
+	spec = specProcessor(specJSON);
 
 // INACTIVE - Basic workflow for creating a valid casper test file.
 gulp.task('workflow-basic', function(){
@@ -25,7 +27,7 @@ gulp.task('workflow-basic', function(){
 // Basic workflow for creating a valid casper test file - using Swig to support multiple asserts.
 gulp.task('workflow-swig', function(){
 	gulp.src('src/casper-test-swig.tpl')
-		.pipe(data(specJSON))
+		.pipe(data(spec))
 		.pipe(swig())
 		.pipe(rename('casper-test.js'))
 		.pipe(gulp.dest('targets/'))

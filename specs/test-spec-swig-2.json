@@ -1,36 +1,45 @@
 {
 	"testCaseName": "Test case 1",
+
+	"testCaseDescription": "This test case selects two dropdowns on quote selection page and then clicks continue button",
 	
-	"url": "https://sysa.insuranceonline.nrma.auiag.corp/oss/GTConnect/UnifiedAcceptor/SelfServiceCentre.Main/brandId/nrma",
+	"url": "https://sysa.insuranceonline.nrma.auiag.corp/oss/GTConnect/UnifiedAcceptor/Portal.Quote/brandId/nrma",
 	
+	"signalOk": "header.nrma",
+
 	"numOfAsserts": 2,
-	
+
 	"expects": [
-		"assertExists('#username')", 
-		"assertExists('#password')"
+		"assertExists('select.optState')"
 	],
 
 	"actions": [
 		{
-			"action": "click",
-			"target": "button.buttonLogin",
+			"type": "select(Car Insurance)",
+			"form": "form",
+			"target": ".optProductFamily",
 			"expects": [
-				"test.assertExists('#login_error')"
+				"assertField({ type: 'css', path: 'select.optProductFamily' }, 'Car Insurance')"
 			]
 		},
 		{
-			"action": "click",
-			"target": "button#buttonViewPolicy",
+			"type": "select(Comprehensive)",
+			"form": "form",
+			"target": ".optProduct",
+			"wait": 3,
 			"expects": [
-				"test.assertExists('#login_error')"
+				"assertField({ type: 'css', path: 'select.optProduct' }, 'Comprehensive')"
 			]
 		},
 		{
-			"action": "click",
-			"target": "button#buttonRenew",
+			"type": "click",
+			"target": "button.btnGetQuote",
+			"wait": 3,
+			"signalOk": ".top-vehicle-search",
 			"expects": [
-				"test.assertExists('#login_error')"
-			]
+				"assertExists('select.optCarYear')"
+			],
+			"timeoutMsg": "Loading motor quote page one timeout."
 		}
 	]
 }
