@@ -47,19 +47,22 @@ Terminology
 -----------
 #### Template - ```casper-test.tpl```
 This file contains the casperjs test file template where test specifications will be injected.
+*This file is provided by Hyrax, and should not be modified by end user.
 
-#### Specification - ```test-spec.json```
-This file contains the test specifications.
+#### Test specification - ```*.json```
+This file contains the test specifications in the form of JSON object.
 
 How it works
 ------------
-Define your test case in ```test-spec-swig.json```.
-Note that the ```numOfAsserts``` MUST be the same as the number of asserts in ```asserts``` array.
+Basically, Hyrax takes a test specification file (*.json), combines which with the built-in template to generate a javascript file with which CasperJS can run.
 
-Cd to the root of this repo, type
-```
-gulp
-```
+Gulp
+----
+At the moment, 2 gulp tasks are provided to run Hyrax.
+
+* ```gulp partial``` - generates casper-test.js file which you can then run with CasperJS manually. This is ideal for troubleshooting issues with your test specification
+* ```gulp``` - this default task will first generate casper-test.js, and then run it with CasperJS automatically
+
 
 Known Issues
 ------------
