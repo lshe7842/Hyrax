@@ -14,7 +14,7 @@ Features
 
 How it works
 ------------
-Basically, Hyrax takes a test specification file (*.json), combines which with the built-in template to generate a javascript file with which CasperJS can run.
+Basically, Hyrax takes a test specification file (*.json), combines it with the built-in template to generate a javascript file which CasperJS can run.
 
 
 Terminology
