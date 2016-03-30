@@ -1,45 +1,96 @@
 {
 	"testCaseName": "Test case 1",
 
-	"testCaseDescription": "This test case selects two dropdowns on quote selection page and then clicks continue button",
+	"testCaseDescription": "This test case creates a CTP quote following happy path.",
 	
-	"url": "https://sysa.insuranceonline.nrma.auiag.corp/oss/GTConnect/UnifiedAcceptor/Portal.Quote/brandId/nrma",
-	
-	"signalOk": "header.nrma",
+	"url": "https://bats.insuranceonline.nrma.auiag.corp/insurance-quotes/ctp-greenslips/terms-of-use.do",
 
-	"numOfAsserts": 2,
+	"clearCookies": true,
+	
+	"signalOk": "img.responsive-common-header-logo",
+
+	"numOfAsserts": 1,
 
 	"expects": [
-		"assertExists('select.optState')"
+		"assertExists('img.responsive-common-header-logo')"
 	],
 
 	"actions": [
 		{
-			"type": "select(Car Insurance)",
-			"form": "form",
-			"target": ".optProductFamily",
-			"expects": [
-				"assertField({ type: 'css', path: 'select.optProductFamily' }, 'Car Insurance')"
-			]
+			"type": "click",
+			"target": "input[id=ctp_vehicleDetails1_isCurrentlyRegisteredYes] + label",
+			"after": {
+				"signalOk": "div.common-additionalQuestions",
+				"signalOkWith": "offsetHeight !== 0",
+				"print": "### Selected 'Yes' to 'is vehicle currently registered' question."
+			}
 		},
-		{
-			"type": "select(Comprehensive)",
-			"form": "form",
-			"target": ".optProduct",
-			"wait": 3,
-			"expects": [
-				"assertField({ type: 'css', path: 'select.optProduct' }, 'Comprehensive')"
-			]
-		},
+
 		{
 			"type": "click",
-			"target": "button.btnGetQuote",
+			"target": "input#ctp_vehicleDetails1_haveRegistrationPapersNo + label",
+			"after": {
+				"signalOk": "div#ctp_vehicleDetails1_businessPurpose_row",
+				"signalOkWith": "offsetHeight !== 0",
+				"print": "### Selected 'I don't have them now' to registration papers question."
+			}
+		},
+
+		{
+			"type": "click",
+			"target": "input#ctp_vehicleDetails1_businessPurposeNo + label",
+			"after": {
+				"signalOk": "div#ctp_vehicleDetails1_assetSearch_row",
+				"signalOkWith": "offsetHeight !== 0",
+				"print": "### Selected 'No, private use only' to vehicle usage question."
+			}
+		},
+
+		{
+			"type": "input(abc)",
+			"target": "input[name=regoNum]",
+			"after": {
+				"signalOk": "a#ctp_vehicleDetails1_findVehicle[style*='opacity: 1']",
+				"print": "### Search for plate number 'abc'."
+			}
+		},
+
+		{
+			"type": "click",
+			"target": "a#ctp_vehicleDetails1_findVehicle",
+			"after": {
+				"signalOk": "div#ctp_vehicleDetails1_assets[style*='display: block']",
+				"timeout": 10,
+				"timeoutMsg": "Timeout when searching for vehicles.",
+				"print": "### Found matched vehicle."
+			}
+		},
+
+		{
+			"type": "click",
+			"target": "ul.vehicleDetailSelect > li label",
+			"print": "### Selected a vehicle."
+		},
+
+		{
+			"type": "input(2223)",
+			"target": "input[name=suburbPostcode]",
 			"wait": 3,
-			"signalOk": ".top-vehicle-search",
-			"expects": [
-				"assertExists('select.optCarYear')"
-			],
-			"timeoutMsg": "Loading motor quote page one timeout."
+			"after": {
+				"signalOk": "div.ac_results",
+				"signalOkWith": "offsetHeight !== 0",
+				"print": "### Found matched suburbs."
+			}
+		},
+
+		{
+			"type": "click",
+			"target": "div.ac_results ul > li",
+			"after": {
+				"signalOk": "div.ac_results",
+				"signalOkWith": "offsetHeight === 0",
+				"print": "### Selected a suburb."
+			}
 		}
 	]
 }

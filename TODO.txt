@@ -1,3 +1,8 @@
+PENDING:
 1. Programmatically get the number of asserts in a test case;
 2. Multiple test cases in seperate casperjs files;
+4. How to make reusable test spec JSON object;
+5. Check element state - disable/enable;
+
+COMPLETE:
 3. Interpret 'actions' into functions provided by casperjs;

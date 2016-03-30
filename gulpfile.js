@@ -4,28 +4,23 @@ var gulp = require('gulp'),
 	del = require('del'),
 	data = require('gulp-data'),
 	swig = require('gulp-swig'),
+	minimist = require('minimist'),
 	casperjs = require('gulp-casperjs'),
 	specProcessor = require('./src/testSpecProcessor');
 
 // var specJSON = require('./specs/test-spec.json');
 
-var specJSON = require('./specs/test-spec-swig.json'),
+var knownOptions = {
+    string: 'spec',
+    default: {spec: 'test-spec-swig'}
+};
+var option = minimist(process.argv.slice(2), knownOptions);
+
+var specJSON = require('./specs/' + option.spec + '.json'),
 	spec = specProcessor(specJSON);
 
-// INACTIVE - Basic workflow for creating a valid casper test file.
-gulp.task('workflow-basic', function(){
-	gulp.src('src/casper-test.tpl')
-		.pipe(template({
-			testCaseName: 'Test case 1',
-			url: 'https://sysa.insuranceonline.nrma.auiag.corp/oss/GTConnect/UnifiedAcceptor/SelfServiceCentre.Main/brandId/nrma',
-			assert: 'test.assertExists("#username")'
-		}))
-		.pipe(rename('casper-test.js'))
-		.pipe(gulp.dest('targets/'));
-});
-
 // Basic workflow for creating a valid casper test file - using Swig to support multiple asserts.
-gulp.task('workflow-swig', function(){
+gulp.task('workflow-prepare-run', function(){
 	gulp.src('src/casper-test-swig.tpl')
 		.pipe(data(spec))
 		.pipe(swig())
@@ -34,8 +29,17 @@ gulp.task('workflow-swig', function(){
 		.pipe(casperjs());
 });
 
+gulp.task('workflow-prepare', function(){
+	gulp.src('src/casper-test-swig.tpl')
+		.pipe(data(spec))
+		.pipe(swig())
+		.pipe(rename('casper-test.js'))
+		.pipe(gulp.dest('targets/'));
+});
+
 gulp.task('clean-temp', function(){
 	del(['temp/**', 'targets/**']);
 });
 
-gulp.task('default', ['clean-temp', 'workflow-swig']);
+gulp.task('default', ['clean-temp', 'workflow-prepare-run']);
+gulp.task('partial', ['clean-temp', 'workflow-prepare']);

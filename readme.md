@@ -1,7 +1,15 @@
-# Testing Framework For KANA Form Process
-(We need a name for this framework.. so come up with one!)
+# Hyrax
+### Web application automation without coding
 
-## Setup environment
+## Features
+Fast - on average 3X faster than well organized Selenium based automation scripts, thanks to the headless DOM implementation provided by PhantomJS
+Easy - no IDE and coding required
+Flexible - can be plugged into your existing workflow
+
+## Usage
+
+## Build Hyrax
+### Setup environment
 Follow below guide to setup the build environment in your local pc.
 
 1. Setup nodejs (google it);
@@ -43,3 +51,15 @@ Cd to the root of this repo, type
 ```
 gulp
 ```
+
+## Known Issues
+#### Phantomjs crashes occasionally when navigating between pages
+It seems that this issue is caused by casperjs API function ```waitFor``` pulling element defined by ```signalOk``` in our test specification file. Try to use ```"waitFor": true``` in the test specification to get around this issue.
+
+## Contributors
+Shen Lu
+Gary Guonian Xin
+
+## Special Thanks
+Anand Krishnamurthy
+Ludovic Barbier
