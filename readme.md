@@ -11,8 +11,21 @@ Features
 * Flexible - can be plugged into your existing workflow
 * Ideal for regression testing - free web application developers from learning and using complex automation tools so that they can focus on developing high quality codes
 
-Usage
------
+
+How it works
+------------
+Basically, Hyrax takes a test specification file (*.json), combines which with the built-in template to generate a javascript file with which CasperJS can run.
+
+
+Terminology
+-----------
+#### Template - ```casper-test.tpl```
+This file contains the casperjs test file template where test specifications will be injected.
+*This file is provided by Hyrax, and should not be modified by end user.
+
+#### Test specification - ```*.json```
+This file contains the test specifications in the form of JSON object.
+
 
 Build Hyrax
 -----------
@@ -43,19 +56,6 @@ NOTE: it seems that casperjs doesn't work too well with ConEmu, better do this u
 ```
 
 
-Terminology
------------
-#### Template - ```casper-test.tpl```
-This file contains the casperjs test file template where test specifications will be injected.
-*This file is provided by Hyrax, and should not be modified by end user.
-
-#### Test specification - ```*.json```
-This file contains the test specifications in the form of JSON object.
-
-How it works
-------------
-Basically, Hyrax takes a test specification file (*.json), combines which with the built-in template to generate a javascript file with which CasperJS can run.
-
 Gulp
 ----
 At the moment, 2 gulp tasks are provided to run Hyrax.
@@ -69,10 +69,12 @@ Known Issues
 #### Phantomjs crashes occasionally when navigating between pages
 It seems that this issue is caused by casperjs API function ```waitFor``` pulling element defined by ```signalOk``` in our test specification file. Try to use ```"waitFor": true``` in the test specification to get around this issue.
 
+
 Contributors
 ------------
 * Shen Lu
-* Gary Guonian Xin
+* Guonian Xin
+
 
 Special Thanks
 --------------
