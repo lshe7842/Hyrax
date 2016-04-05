@@ -54,11 +54,20 @@ module.exports = function(specObj){
 			if(actions[i].timeout && actions[i].timeout > 0){
 				actions[i]._timeout = actions[i].timeout * 1000;
 				delete actions[i].timeout;
+			}else{
+				actions[i]._timeout = spec.timeout * 1000;
 			}
 
 			if(actions[i].after && actions[i].after.timeout && actions[i].after.timeout > 0){
 				actions[i].after._timeout = actions[i].after.timeout * 1000;
 				delete actions[i].after.timeout;
+			}else if(actions[i].after){
+				actions[i].after._timeout = spec.timeout * 1000;
+				delete actions[i].after.timeout;
+
+				if(!actions[i].after.timeoutMsg){
+					actions[i].after.timeoutMsg = "Timout when performing this action.";
+				}
 			}
 
 			if(actions[i].after && actions[i].after.prints && actions[i].after.prints.length > 0){
