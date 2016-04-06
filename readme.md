@@ -102,7 +102,7 @@ Store all your test specifications in ```specs``` folder.
 ```
 gulp --spec=[your_test_specification_name_without_dot_json]
 ```
-Don't make yourself a coffee because you won't have to wait long for test to finish :)
+Don't make yourself a coffee because you won't need to wait long for test to finish :)
 
 Build Hyrax
 -----------
