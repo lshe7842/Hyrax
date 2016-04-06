@@ -27,6 +27,83 @@ This file contains the casperjs test file template where test specifications wil
 This file contains the test specifications in the form of JSON object.
 
 
+Gulp
+----
+At the moment, 2 gulp tasks are provided to run Hyrax.
+
+* ```gulp partial``` - generates casper-test.js file which you can then run with CasperJS manually. This is ideal for troubleshooting issues with your test specification
+* ```gulp``` - this default task will first generate casper-test.js, and then run it with CasperJS automatically
+
+
+How To Write Test Specification
+-------------------------------
+Below example demonstrates how to automate a series of user interactions:
+1. click a button to navigate to the next page;
+2. search for an username on an autocomplete widget;
+3. add a found user by clicking on one of the search results.
+
+```json
+{
+	"testCaseName": "Test case 1",
+
+	"testCaseDescription": "This is a regression test of my web application following happy path.",
+	
+	"url": "http://myurl.com.au",
+	
+	"signalOk": "header.myHeader",
+
+	"timeout": 30,
+
+	"actions": [
+		{
+			"type": "click",
+			"target": "button#myButton",
+			"after": {
+				"signalOk": "#page2",
+				"print": "Navigated to page 2.",
+				"timeoutMsg": "Timeout when navigating to page 2"
+			}
+		},
+
+		{
+			"type": "input(username)",
+			"keepFocus": true,
+			"target": "input#my_input",
+			"after": {
+				"signalOk": "#myResult",
+				"signalOkWith": "value(userFullname)"
+				"prints": "Got search result.",
+				"timeoutMsg": "Timeout when searching for username."
+			}
+		},
+
+		{
+			"type": "click",
+			"target": "#myResult ul > li",
+			"after": {
+				"signalOk": "#mySuccessMsg",
+				"print": [
+					{
+						"string": "Added user with fullname: ",
+						"query": "#mySuccessMsg #userFullname"
+					}
+				],
+				"timeoutMsg": "Timeout when adding an user."
+			}
+		}
+	]
+}
+```
+
+Run Hyrax
+---------
+Store all your test specifications in ```specs``` folder.
+
+```
+gulp --spec=[your_test_specification_name_without_dot_json]
+```
+
+
 Build Hyrax
 -----------
 ### Setup environment
@@ -54,14 +131,6 @@ You should see some normal outputs.
 ```
 NOTE: it seems that casperjs doesn't work too well with ConEmu, better do this under normal windows command line tool.
 ```
-
-
-Gulp
-----
-At the moment, 2 gulp tasks are provided to run Hyrax.
-
-* ```gulp partial``` - generates casper-test.js file which you can then run with CasperJS manually. This is ideal for troubleshooting issues with your test specification
-* ```gulp``` - this default task will first generate casper-test.js, and then run it with CasperJS automatically
 
 
 Known Issues
