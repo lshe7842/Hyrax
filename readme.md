@@ -97,40 +97,23 @@ Below example demonstrates how to automate a series of user interactions:
 
 Run Hyrax
 ---------
+### Prerequisites
+Install
+
+*1. NodeJS
+*2. Gulp
+*3. Python 2.x
+*4. PhantomJS 1.9.2
+*5. Casper 1.1.0-beta3
+
+To verify installations, open cmd, cd to root dir of this repo, type ```casperjs env-verify.js```, you should be able to see some success outputs.
+
 Store all your test specifications in ```specs``` folder.
 
 ```
 gulp --spec=[your_test_specification_name_without_dot_json]
 ```
 Don't make yourself a coffee because you won't need to wait long for test to finish :)
-
-Build Hyrax
------------
-### Setup environment
-Follow below guide to setup the build environment in your local pc.
-
-1. Setup nodejs (google it);
-
-2. Open your command line tool, type
-```
-npm install -global gulp
-```
-And then
-```
-npm install
-```
-This will install the build system ```gulp``` as well as all other dependencies;
-
-3. Read and follow ```env-setup.txt``` to setup PhantomJS and Casper which are the driving wheels of this whole framework.
-
-4. At the command line, type
-```
-casperjs env-verify.js
-```
-You should see some normal outputs.
-```
-NOTE: it seems that casperjs doesn't work too well with ConEmu, better do this under normal windows command line tool.
-```
 
 
 Known Issues
