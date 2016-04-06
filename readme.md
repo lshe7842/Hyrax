@@ -38,9 +38,9 @@ At the moment, 2 gulp tasks are provided to run Hyrax.
 How To Write Test Specification
 -------------------------------
 Below example demonstrates how to automate a series of user interactions:
-1. click a button to navigate to the next page;
-2. search for an username on an autocomplete widget;
-3. add a found user by clicking on one of the search results.
+* 1. click a button to navigate to the next page;
+* 2. search for an username on an autocomplete widget;
+* 3. add a found user by clicking on one of the search results.
 
 ```json
 {
@@ -100,11 +100,11 @@ Run Hyrax
 ### Prerequisites
 Install
 
-*1. NodeJS
-*2. Gulp
-*3. Python 2.x
-*4. PhantomJS 1.9.2
-*5. Casper 1.1.0-beta3
+* 1. NodeJS
+* 2. Gulp
+* 3. Python 2.x
+* 4. PhantomJS 1.9.2
+* 5. Casper 1.1.0-beta3
 
 To verify installations, open cmd, cd to root dir of this repo, type ```casperjs env-verify.js```, you should be able to see some success outputs.
 
