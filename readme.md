@@ -71,7 +71,7 @@ Below example demonstrates how to automate a series of user interactions:
 			"target": "input#my_input",
 			"after": {
 				"signalOk": "#myResult",
-				"signalOkWith": "value(userFullname)"
+				"signalOkWith": "value(userFullname)",
 				"prints": "Got search result.",
 				"timeoutMsg": "Timeout when searching for username."
 			}
