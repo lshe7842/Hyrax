@@ -72,7 +72,7 @@ Below example demonstrates how to automate a series of user interactions:
 			"after": {
 				"signalOk": "#myResult",
 				"signalOkWith": "value(userFullname)",
-				"prints": "Got search result.",
+				"print": "Got search result.",
 				"timeoutMsg": "Timeout when searching for username."
 			}
 		},
@@ -82,7 +82,7 @@ Below example demonstrates how to automate a series of user interactions:
 			"target": "#myResult ul > li",
 			"after": {
 				"signalOk": "#mySuccessMsg",
-				"print": [
+				"prints": [
 					{
 						"string": "Added user with fullname: ",
 						"query": "#mySuccessMsg #userFullname"
