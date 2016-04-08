@@ -37,6 +37,8 @@ At the moment, 2 gulp tasks are provided to run Hyrax.
 
 How To Write Test Specification
 -------------------------------
+See [Wiki](https://github.com/lshe7842/Hyrax/wiki) for details on configuration items
+
 Below example demonstrates how to automate a series of user interactions:
 * click a button to navigate to the next page;
 * search for an username on an autocomplete widget;
