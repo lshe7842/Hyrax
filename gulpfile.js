@@ -20,7 +20,7 @@ var specJSON = require('./specs/' + option.spec + '.json'),
 	spec = specProcessor(specJSON);
 
 // Basic workflow for creating a valid casper test file - using Swig to support multiple asserts.
-gulp.task('workflow-prepare-run', function(){
+gulp.task('workflow-prepare-run', ['clean-temp'], function(){
 	gulp.src('src/casper-test-swig.tpl')
 		.pipe(data(spec))
 		.pipe(swig())
@@ -29,7 +29,7 @@ gulp.task('workflow-prepare-run', function(){
 		.pipe(casperjs());
 });
 
-gulp.task('workflow-prepare', function(){
+gulp.task('workflow-prepare', ['clean-temp'], function(){
 	gulp.src('src/casper-test-swig.tpl')
 		.pipe(data(spec))
 		.pipe(swig())
